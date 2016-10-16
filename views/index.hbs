@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="header clearfix">
+        <h3 class="text-primary"><a href="/">Delay<span class="text-muted">la</span></a></h3>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display-5">Delay HTTP requests with ease</h1>
+        <p class="lead">Got an endpoint whose response you want to delay without changing any server code?<br/>
+            Delayla helps you with a simple online service.</p>
+        <form class="form-inline" action="/" method="get">
+            <div class="form-group">
+                <label class="sr-only" for="urlInput">URL</label>
+                <input type="url" class="form-control" id="urlInput" name="url" placeholder="Enter url"
+                       required="required">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="delayInput">Delay amount</label>
+                <div class="input-group">
+                    <input type="number" min="1" max="10" value="3" name="delay" class="form-control" id="delayInput"
+                           placeholder="secs" required="required">
+                    <div class="input-group-addon">secs</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-success">Generate delay url</button>
+        </form>
+        {{#if delayUrl}}
+            <div class="m-t-2">
+                <p>Send request to:</p>
+                <input class="form-control form-control-lg" type="url" onclick="this.select()" readonly='readonly'
+                       value="{{{delayUrl}}}"/>
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h4>Getting started</h4>
+            <p>Change the endpoint url to
+                <code>{{{url}}}/delay/_YOUR_URL_HERE_/for/_SECONDS_HERE_</code> and run the request.
+                Delayla will automatically wait the specified number of seconds and then redirect to the given URL.</p>
+            <p>Example: Delay a request to <code>http://api.myapp.com/list</code> for 4 seconds by calling
+                <code>{{{url}}}
+                    /delay/http%3A%2F%2Fapi.myapp.com%2Flist/for/4</code>
+            </p>
+
+            <h4>Why</h4>
+            <p>Sometimes you have to test your user interface or application behavior in the state of loading. Making
+                sure that no additional action can be triggered or the loading animation looks nice.</p>
+            <p>However, not always changes to the server side code for delaying the response are possible or
+                unproblematically. This is where delayla steps in and offers a convenient way to slow down network
+                communication of basic requests.</p>
+
+            <h4>Limitations</h4>
+            <p>Due to the <a href="https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0">CORS
+                specification</a> a redirect for cross-origin redirects that include a preflight check request (an
+                OPTIONS request prior to the actual request) is not possible. Thus only <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Simple_requests">simple
+                    requests</a> can be delayed by delayla.</p>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Fork on Github | Report an issue | &copy; Sebastian Fuss 2016</span>
+    </div>
+</footer>
