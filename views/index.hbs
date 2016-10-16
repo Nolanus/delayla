@@ -34,26 +34,33 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h4>Getting started</h4>
+            <h3>Getting started</h3>
             <p>Change the endpoint url to
                 <code>{{{url}}}/delay/_YOUR_URL_HERE_/for/_SECONDS_HERE_</code> and run the request.
                 Delayla will automatically wait the specified number of seconds and then redirect to the given URL.</p>
-            <p>Example: Delay a request to <code>http://api.myapp.com/list</code> for 4 seconds by calling
-                <code>{{{url}}}
-                    /delay/http%3A%2F%2Fapi.myapp.com%2Flist/for/4</code>
+            <p>Example 1: Delay a request to <code>http://api.myapp.com/list</code> for 4 seconds by calling
+                <code>{{{url}}}/delay/http%3A%2F%2Fapi.myapp.com%2Flist/for/4</code>. After 4 seconds a 302 redirect to
+                <code>http://api.myapp.com/list</code> will take place.
             </p>
+            <p>All query parameters appended to the requested url will be merged with the query parameters already
+                present at the target url.</p>
+            <p>Example 2: Delay a request to <code>http://api.myapp.com/details?id=3</code> by 2 seconds. Calling
+                <code>{{{url}}}/delay/http%3A%2F%2Fapi.myapp.com%2Fdetails%3Fid%3D3/for/2?jsonp=awesome</code> will
+                result in a two second delay and redirect to
+                <code>http://api.myapp.com/details?id=3&jsonp=awesome</code></p>
 
-            <h4>Why</h4>
+            <h3>Why</h3>
             <p>Sometimes you have to test your user interface or application behavior in the state of loading. Making
                 sure that no additional action can be triggered or the loading animation looks nice.</p>
             <p>However, not always changes to the server side code for delaying the response are possible or
-                unproblematically. This is where delayla steps in and offers a convenient way to slow down network
-                communication of basic requests.</p>
+                unproblematic. This is where delayla steps in and offers a convenient way to slow down network
+                communication of basic requests by just changing the url.</p>
 
-            <h4>Limitations</h4>
+            <h3>Limitations</h3>
             <p>Due to the <a href="https://www.w3.org/TR/cors/#cross-origin-request-with-preflight-0">CORS
                 specification</a> a redirect for cross-origin redirects that include a preflight check request (an
-                OPTIONS request prior to the actual request) is not possible. Thus only <a
+                OPTIONS request prior to the actual request) is not possible. Furthermore <code>POST</code> requests
+                cannot be redirected. Thus only GET and HEAD <a
                         href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Simple_requests">simple
                     requests</a> can be delayed by delayla.</p>
         </div>
@@ -63,6 +70,7 @@
 
 <footer class="footer">
     <div class="container text-muted text-xs-center">
-        <p>Delayla<br /><a href="https://github.com/Nolanus/delayla">Star on Github</a> | <a href="https://github.com/Nolanus/delayla/issues/new">Report an issue</a></p>
+        <p>Delayla<br/><a href="https://github.com/Nolanus/delayla">Star on Github</a> | <a
+                href="https://github.com/Nolanus/delayla/issues/new">Report an issue</a></p>
     </div>
 </footer>
