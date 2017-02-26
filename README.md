@@ -1,5 +1,9 @@
 # Delayla
 
+[![Dependency Status](https://david-dm.org/Nolanus/delayla.svg)](https://david-dm.org/Nolanus/delayla)
+[![devDependency Status](https://david-dm.org/Nolanus/delayla/dev-status.svg)](https://david-dm.org/Nolanus/delayla?type=dev)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/aa87c14a761b4f969619645468af175c)](https://www.codacy.com/app/sebastian-fuss/delayla?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Nolanus/delayla&amp;utm_campaign=Badge_Grade)
+
 Delayed HTTP responses as a service. Visit http://delayla.herokuapp.com/ for deployed version.
 
 ## Run your own
