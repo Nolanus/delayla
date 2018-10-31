@@ -1,0 +1,20 @@
+sudo: required
+
+language: node_js
+
+node_js:
+  - "11"
+
+before_install:
+
+install:
+  # Install the library deps
+  - npm install
+  # Lint the demo app
+  - npm run lint
+
+script:
+  # Execute some tests later on?!
+
+after_success:
+  # Maybe trigger some deployment
